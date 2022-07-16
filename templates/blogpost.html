@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    Blog
+{% endblock title %}
+
+{% block body %}
+{% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %} 
+
+<div class="container p-4">  
+    <h2 class="text-center alert alert-info">Add Post Here</h2>
+    <form action="blogpost" method="POST"> 
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="text" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+
+        <div class="mb-3">
+            <label for="Textarea" class="form-label">Description</label>
+            <textarea class="form-control" rows="3" name="desc"></textarea>
+        </div>
+
+        <input type="submit" value="Post" class="btn btn-success">
+    </form>
+</div>
+
+{% endblock body %}

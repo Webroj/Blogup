@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    Detail
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container p-4">  
+    <h2 class="text-center alert alert-info">Blog Detail Here</h2> 
+    <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">{{iblog.title}}</h3>
+                        <div class="mb-1 text-muted">{{iblog.date}}</div>
+                        <b>Posted By :- {{iblog.user_id.username}}</b>
+                        <p class="card-text mb-auto">{{iblog.desc}}<p>
+                    </div>
+                        
+                </div>   
+            </div>
+        
+    </div>
+</div>
+
+{% endblock body %}

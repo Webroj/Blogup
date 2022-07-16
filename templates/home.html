@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block body %}
+
+{% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+{% load static %}
+<div class="container p-2"> 
+    <div class="img text-center pt-0 pb-4">
+        <img src="{% static 'img/4.jpg' %}">
+    </div>  
+    <h2 class="text-center alert alert-info">Your all Post Here</h2> 
+    <div class="row mb-2">
+        {% for ablog in mblog %}
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">{{ablog.title}}</h3>
+                        <div class="mb-1 text-muted">{{ablog.date}}</div>
+                        <b>Posted By :- {{ablog.user_id.username}}</b>
+                        <p class="card-text mb-auto">{{ablog.desc}}<p><br>
+                        <b><a href="blog_detail/{{ablog.id}}" class="btn btn-success">Blog Data </a></b>
+                    </div>
+                        
+                </div>   
+            </div>
+        {% endfor %} 
+    </div>
+</div>
+
+{% endblock body %}
